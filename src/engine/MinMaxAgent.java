@@ -6,6 +6,7 @@
 package engine;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  *
@@ -21,18 +22,18 @@ public class MinMaxAgent {
     }
     
     public void playMove(Position pos) {
-        ArrayList<Move> mlist = pos.moves();
-        ArrayList<Integer> vlist = new ArrayList();
-        mlist.forEach((Move m) -> {
-            pos.play(m);
-            int value = minmax(pos);
-            pos.undo(m);
-            vlist.add(0, new Integer(value));
-        });
-        
+        Move bestMove = minmax(pos);
+        pos.play(bestMove);
     }
     
-    public int minmax(Position pos) {
-        return 0;
+    public Move minmax(Position pos) {
+        ArrayList<Move> mlist = pos.moves();
+        mlist.forEach((Move m) -> {
+            int rv = (int) (Math.random() * 100);
+            m.setValue(rv);
+        });
+        
+        Collections.sort(mlist);
+        return mlist.get(0);
     }
 }
