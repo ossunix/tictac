@@ -19,40 +19,65 @@ public class MainFrame extends JFrame  {
 
 	private final int BORDER = 20;
 	
-	private GridPanel grid;
+	public static GridPanel grid = new GridPanel();
 	
 	public MainFrame() {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		
-		JMenuBar menuBar = new JMenuBar();
-		setJMenuBar(menuBar);
-		
-		
-		
-		
-		add(new GridPanel());
-		((JComponent)getContentPane()).setBorder(BorderFactory.createMatteBorder(BORDER, BORDER, BORDER, BORDER, this.getBackground()));
+		add(grid);
+		setTitle("Tic-Tac-Toe");
+		setBorder();
 		setResizable(false);
+		setMenus();
+		
 		pack();
 		centreWindow(this);
-		
-		grid = new GridPanel();
-		
-		
-			JMenu mnGame = new JMenu("Game");
-			menuBar.add(mnGame);	
-			
-			JMenuItem mntmPlayLevel = new JMenuItem("Play level 1");
-			mntmPlayLevel.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					grid.newGame(1);
-				}
-			});
-			mnGame.add(mntmPlayLevel);
-		
 		setVisible(true);
+	}
+
+	private void setBorder() {
+		((JComponent)getContentPane()).setBorder(BorderFactory.createMatteBorder(BORDER, BORDER, BORDER, BORDER, this.getBackground()));
+	}
+
+	private void setMenus() {
+		JMenuBar menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
+		JMenu mnGame = new JMenu("Game");
+		menuBar.add(mnGame);	
+		
+		JMenuItem mntmPlayLevel = new JMenuItem("Comp. vs. comp");
+		mntmPlayLevel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				grid.newComputerGame(1);
+			}
+		});
+		
+		JMenuItem mntmPlayLevel_1 = new JMenuItem("Play Level 1");
+		mntmPlayLevel_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				grid.newGame(1);
+			}
+		});
+		
+		JMenuItem mntmPlayLevel_2 = new JMenuItem("Play Level 2");
+		mntmPlayLevel_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				grid.newGame(2);
+			}
+		});
+		
+		JMenuItem mntmPlayLevel_3 = new JMenuItem("Play Level 3");
+		mntmPlayLevel_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				grid.newGame(3);
+			}
+		});
+		
+		mnGame.add(mntmPlayLevel_1);
+		mnGame.add(mntmPlayLevel_2);
+		mnGame.add(mntmPlayLevel_3);
+		mnGame.add(mntmPlayLevel);
 	}
 	
 	public static void centreWindow(Window frame) {
