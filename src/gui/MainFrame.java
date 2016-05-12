@@ -6,6 +6,8 @@ import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -15,7 +17,7 @@ import javax.swing.JMenuItem;
 @SuppressWarnings("serial")
 public class MainFrame extends JFrame  {
 
-	private final int BORDER = 25;
+	private final int BORDER = 20;
 	
 	private GridPanel grid;
 	
@@ -28,9 +30,10 @@ public class MainFrame extends JFrame  {
 		setJMenuBar(menuBar);
 		
 		
-		//((JComponent)getContentPane()).setBorder(BorderFactory.createMatteBorder(BORDER, BORDER, BORDER, BORDER, this.getBackground()));
+		
 		
 		add(new GridPanel());
+		((JComponent)getContentPane()).setBorder(BorderFactory.createMatteBorder(BORDER, BORDER, BORDER, BORDER, this.getBackground()));
 		setResizable(false);
 		pack();
 		centreWindow(this);

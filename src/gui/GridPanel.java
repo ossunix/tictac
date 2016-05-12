@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import engine.MinMaxAgent;
 import engine.Position;
 
+@SuppressWarnings("serial")
 public class GridPanel extends JPanel {
 	
 	Position position = new Position();
@@ -18,21 +19,16 @@ public class GridPanel extends JPanel {
 	public GridPanel(){
 		
 		setLayout(null);
-		setPreferredSize(new Dimension(300, 300));
-	
+		setPreferredSize(new Dimension(320, 320));
 		JLabel grid = new JLabel(ImageHelper.getGrid());
 		grid.setBounds(0, 0, 300, 300);
 		add(grid);
 		
-		while (position.result()==0) {
+		while (position.result() == 0) {
 			
 			agent.playMove(position);
-			
-			
-			
 			fillGrid(position.getTable());
 		}
-		
 	}
 
 	private void fillGrid(char[][] table) {
@@ -46,7 +42,6 @@ public class GridPanel extends JPanel {
 				field.setBounds(i*100, j*100, 100, 100);
 				add(field);
 				fields[i][j] = field;
-				System.out.println(field);
 			}
 		}
 	}
