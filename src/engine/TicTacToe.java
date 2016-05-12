@@ -5,6 +5,7 @@
  */
 package engine;
 
+
 import java.util.ArrayList;
 
 /**
@@ -17,11 +18,22 @@ public class TicTacToe {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Position pos = new Position();
-        pos.print();
-        ArrayList<Move> mlist = pos.moves();
-        mlist.forEach((Move m) -> {
-            System.out.println("(" + m.getRow() + "," + m.getCol() + ")");
-        });
+        MinMaxAgent mma = new MinMaxAgent(MinMaxAgent.LEVEL[1]);
+        
+        int[] scores = { 0, 0, 0 };
+        for(int i=0; i<1000;i++) {
+            Position pos = new Position();
+            while(pos.result() == 0) {
+                mma.playMove(pos);
+            }
+            int res = pos.result();
+            if(res == 100)
+                scores[0] += 1;
+            else if(res == -100)
+                scores[2] += 1;
+            else
+                scores[1] += 1;        
+            System.out.println("X:" + scores[0] + " D:" + scores[1] + " O:" + scores[2]);
+        }
     }    
 }
