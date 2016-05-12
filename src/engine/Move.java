@@ -9,9 +9,18 @@ package engine;
  *
  * @author Toma
  */
-public class Move {
+public class Move implements Comparable {
     
     private int row, col;
+    private int value;
+
+    public int getValue() {
+        return value;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
+    }
     
     public Move(int row, int col) {
         this.row = row;
@@ -24,5 +33,10 @@ public class Move {
     
     public int getCol() {
         return col;
+    }
+    
+    @Override
+    public int compareTo(Object o) {
+        return ((Move)o).value - this.value;
     }
 }
