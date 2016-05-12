@@ -18,6 +18,7 @@ public class Field extends JLabel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				System.out.println(e.getSource().toString());
+				
 			}
 		});
 		
@@ -31,11 +32,12 @@ public class Field extends JLabel {
 			setIcon(ImageHelper.getX());
 		} else if (symbol == 'O') {
 			setIcon(ImageHelper.getO());
+			
 		}
 	}
 
 	@Override
 	public String toString() {
-		return "[" + row + ", " + column + "]";
+		return "[" + row + ", " + column + " " + symbol + "]";
 	}
 }
