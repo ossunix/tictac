@@ -18,8 +18,8 @@ public class MinMaxAgent {
     private Position pos;
     private int maxDepth;
     
-    public MinMaxAgent(int maxDepth) {
-        this.maxDepth = maxDepth;
+    public MinMaxAgent(int level) {
+        this.maxDepth = LEVEL[level-1];
     }
     
     public void playMove(Position pos) {
